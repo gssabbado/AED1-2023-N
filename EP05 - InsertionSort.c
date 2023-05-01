@@ -8,8 +8,8 @@
 void Insertion (int n, int v[]) {
 	int i, j, x;
 	
-	for (j = 1; /*A*/ j < n; j++) {               // Invariante A: 1. o vetor v[0...n-1] é uma permutação do vetor original
-		x = v[j];                                 //               2. o vetor[0...j-1] é crescente
+	for (j = 1; /*A*/ j < n; j++) {               // Invariante A: 1. o vetor v[0...n-1] Ã© uma permutaÃ§Ã£o do vetor original
+		x = v[j];                             //               2. o vetor[0...j-1] Ã© crescente
 		for (i = j - 1; i >= 0 && v[i] > x; i--) 
 			v[i + 1] = v[i];
 		v[i + 1] = x;
@@ -27,7 +27,7 @@ int main () {
 	
 	srand(time(NULL));
 	
-/*	for (i = 0; i < MAX; i++) {         //inicializar vetor com numeros aletorios entre 0 e MAX
+/*	for (i = 0; i < MAX; i++) {         //inicializar vetor com numeros aleatorios entre 0 e MAX
 		vetor[i] = (rand() % MAX);
 		//printf("vetor[%d] = %d\n", i, vetor[i]); 
 	}
