@@ -8,8 +8,8 @@
 void Selection (int n, int v[]) {
 	int i, j, min, x;
 	
-	for (i = 0; /*A*/ i < n - 1; i++) {         // Invariante A: 1. v[0...n-1] é uma permutação do vetor original 
-		min = i;                                //               2. v[0...i-1] está em ordem crescente
+	for (i = 0; /*A*/ i < n - 1; i++) {             // Invariante A: 1. v[0...n-1] Ã© uma permutaÃ§Ã£o do vetor original 
+		min = i;                                //               2. v[0...i-1] estÃ¡ em ordem crescente
 		for (j = i + 1; j < n; j++) {           //               3. v[i - 1] <= v[j] para j = i, i+1,..., n-1
 			if (v[j] < v[min]) 
 				min = j;
