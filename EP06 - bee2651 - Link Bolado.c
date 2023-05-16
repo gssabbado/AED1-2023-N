@@ -1,11 +1,12 @@
-//Funciona
-
 #include <stdio.h>
 #include <string.h>
 #include <ctype.h>
 
 #define MAX 100000
 
+/* Recebe palavra[0..4] para a comparação e recebe o texto[0...MAX].
+ * Retorna um printf se a palavra foi achada ou não no texto
+ */
 void trivial (char palavra[], char texto[]) {
 	int k, r, cont = 0;
 	int m, n;
@@ -18,6 +19,7 @@ void trivial (char palavra[], char texto[]) {
 			r++;
 			cont++;
 		}
+		// se contador for igual 5, então a palavra foi achado no texto, não há necessidade de procurar mais no vetor texto
 		else if (cont == 5) break;
 		else {
 			r = 0;
