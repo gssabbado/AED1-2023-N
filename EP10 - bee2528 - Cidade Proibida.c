@@ -2,7 +2,7 @@
 #include <string.h>
 #include <stdbool.h>
 
-//#define INF 0xfd3d3d3dU
+#define INF 0xfd3d3d3dU
 #define MAX 1200
 
 typedef unsigned uint;
@@ -45,15 +45,15 @@ void dijkstra (int C, int N, uint g[MAX][MAX], uint *d) {
 
 int main () {
 	int N_Cidades, M_Rotas; //N = numero de cidades e M = numero de Rotas | 3 <= N <= 1000, 1 <= M <= N(N-1)/2
-	int A, B; // Rota de A até B | 1 <= A,B <= N, A != B
+	int A, B; // Rota de A atÃ© B | 1 <= A,B <= N, A != B
 	int C, R, E; // C - Curytyba, R - Riacho de Fevereiro e E - Estatunido
 	int i, j;
 	
 	
-	while (~scanf("%d %d", &N_Cidades, &M_Rotas)) { // testar sem ~
+	while (scanf("%d %d", &N_Cidades, &M_Rotas) != EOF) {
 		for (i = 0; i <= N_Cidades; ++i) {
 			for (j = 0; j <= N_Cidades; j++) {
-				graph[i][j] = INF;  // MUDAR
+				graph[i][j] = INF;  
 			}
 		}
 		for (i = 0; i < M_Rotas; i++) {
