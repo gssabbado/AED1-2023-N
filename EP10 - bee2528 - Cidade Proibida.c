@@ -1,49 +1,45 @@
 #include <stdio.h>
-#include <string.h>
 #include <stdbool.h>
+#include <limits.h>
 
-#define INF 0xfd3d3d3dU
 #define MAX 1200
 
-typedef unsigned uint;
-
-uint dist[MAX];
-uint graph[MAX][MAX];
-
-
-void dijkstra (int C, int N, uint g[MAX][MAX], uint *d) {
-	bool vis[N + 1];
+void Caminho (int C, int N, unsigned int G[MAX][MAX], unsigned int *d) {
+	bool visitado[N + 1];
 	int i, j;
-	int v;
+	int aux;
 	
-	memset(vis, false, sizeof(vis));
+	for (i = 0; i < N + 1; i++)
+		visitado[i] = false;
 	
 	for (i = 0; i <= N; i++) {
-		d[i] = INF;
+		d[i] = INT_MAX;
 	}
 	
 	d[C] = 0;
 	
 	for (i = 0; i <= N; i++) {
-		v = -1;	
+		aux = -1;	
 		for (j = 0; j <= N; j++) {
-			if (!vis[j] && (v == -1 || d[j] < d[v]))
-				v = j;
+			if (!visitado[j] && (aux == -1 || d[j] < d[aux]))
+				aux = j;
 		}
 		
-		if (d[v] == INF)
+		if (d[aux] == INT_MAX)
 			break;
 		
-		vis[v] = true;
+		visitado[aux] = true;
 		for (j = 0; j <= N; j++) {
-			if (d[v] + g[v][j] < d[j])
-				d[j] = g[v][j] + d[v];
+			if (d[aux] + G[aux][j] < d[j])
+				d[j] = G[aux][j] + d[aux];
 		}
 	}
 } 
 
 
 int main () {
+	unsigned int G[MAX][MAX];
+	unsigned int dist[MAX];
 	int N_Cidades, M_Rotas; //N = numero de cidades e M = numero de Rotas | 3 <= N <= 1000, 1 <= M <= N(N-1)/2
 	int A, B; // Rota de A até B | 1 <= A,B <= N, A != B
 	int C, R, E; // C - Curytyba, R - Riacho de Fevereiro e E - Estatunido
@@ -51,27 +47,28 @@ int main () {
 	
 	
 	while (scanf("%d %d", &N_Cidades, &M_Rotas) != EOF) {
+		
 		for (i = 0; i <= N_Cidades; ++i) {
 			for (j = 0; j <= N_Cidades; j++) {
-				graph[i][j] = INF;  
+				G[i][j] = INT_MAX;  // 
 			}
 		}
+	
 		for (i = 0; i < M_Rotas; i++) {
 			scanf("%d %d", &A, &B);
-			graph[A][B] = graph[B][A] = 1;
+			G[A][B] = G[B][A] = 1;
 		}
 		
 		scanf("%d %d %d", &C, &R, &E);
 		
 		for (i = 0; i <= N_Cidades; i++)
-			graph[E][i] = graph[i][E] = INF;
+			G[E][i] = G[i][E] = INT_MAX;
 		
-		dijkstra(C, N_Cidades, graph, dist);
+		Caminho(C, N_Cidades, G, dist);
+
 		
 		printf("%d\n", dist[R]);
 	}
 	
-	
 	return 0;
 }
-
