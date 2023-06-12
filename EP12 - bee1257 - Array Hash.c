@@ -1,9 +1,6 @@
 #include <stdio.h>
-#include <stdlib.h>
-#include <math.h>
 #include <string.h>
 
-#define MAX 100
 #define MAX2 60
 
 
@@ -11,8 +8,8 @@ int main () {
 	unsigned short N, L; // N = Qtd de Casos, L = quatidade de linhas
 	char string[MAX2]; // string = tamanho da string só com letras maiusculas
 	int i, j, h;
-	unsigned short NumLetras, NumCaso;
-	unsigned valorTotal;
+	unsigned short NumLetras, NumCaso; // Numero de letras e casos
+	unsigned valorTotal; // Valor total da soma
 
 	scanf("%hu", &N);
 
